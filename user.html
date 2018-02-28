@@ -1,0 +1,37 @@
+<div  ng-controller="userController">
+	<div class="col-md-6 col-sm-6 col-xs-6">
+	<div class="panel panel-info spacer">
+		<div class="panel-heading"><h3><b>Play the game</b></h3></div>
+		<form  role="form" >
+		<table>
+		<tr>
+		<td>
+		<div class="panel-body" ng-cloak class="ng-cloak">
+			<div class="form-group">
+			  <label for="input1">Input:</label>
+			  <textarea ng-model="input" name="input" id="input" placeholder="Enter your commands here" class="form-control" rows="10" id="input"></textarea>
+			</div>
+		</div>
+		</td>
+		<td>
+		<div class="panel-body" ng-cloak class="ng-cloak">
+			<div class="form-group">
+			  <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-4"></span>
+			  <button class="btn btn-info btn-block" ng-click="play()"> <<< Play >>>  </button>
+			</div>
+		</div>
+		</td>
+		<td>
+		<div class="panel-body" ng-cloak class="ng-cloak">
+			<div class="form-group">
+			  <label for="output1">Output:</label>
+			  <textarea ng-model="output" name="output" id="output"  class="form-control"   rows="5" cols="40" id="output"></textarea>
+			</div>
+		</div>
+		</td>
+		</tr>
+		</table>
+		</form>
+	</div>
+   </div>
+</div>
