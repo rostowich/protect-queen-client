@@ -29,12 +29,25 @@
     
         // create a message to display in our view
         $scope.message = 'Welcome to the game about protecting the queen!';
+       //get the url of the API
+    	$scope.getApiUrl=function(){
+    		$http({
+    			method: 'GET',
+    			url: "./js/api.json",
+    		}).then(function successCallBack(response){
+    			$window.localStorage.setItem('apiUrl',response.data.url+":"+response.data.port);
+    		}, function errorCallBack(response){
+    		});
+    	}
+    	
+    	$scope.getApiUrl();
+        
+        
         $scope.logout=function(){
     		$http({
     			method: 'POST',
-    			url: "http://localhost:7777/logout",
+    			url: $window.localStorage.getItem('apiUrl')+"/logout",
     		}).then(function successCallBack(response){
-    			alert("je me deconnecte");
     			$window.localStorage.setItem('isLogged', false);
     			$rootScope.authenticated=$window.localStorage.getItem('isLogged');
     			$window.location.href = '#/login';

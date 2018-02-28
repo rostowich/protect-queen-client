@@ -11,7 +11,7 @@ app.controller("regController", function($scope,$http, usSpinnerService){
 		};
 		$http({
 			method: 'POST',
-			url: "http://localhost:7777/signup",
+			url: $window.localStorage.getItem('apiUrl')+"/signup",
 			data: dataUser,
 			headers: {'Content-Type': 'application/json' }
 		}).then(function successCallBack(response){

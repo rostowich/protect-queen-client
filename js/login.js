@@ -2,7 +2,8 @@
 var app=angular.module("indexApp");
 app.controller("logController", function($rootScope,$httpParamSerializer , $scope, $http, $window, usSpinnerService){
 	//This function is used to authenticate a user
-	$scope.login=function(){
+	
+	$scope.login=function(api){
 		usSpinnerService.spin('spinner-3');
 		var dataUser={
 				"username":$scope.username,
@@ -10,7 +11,7 @@ app.controller("logController", function($rootScope,$httpParamSerializer , $scop
 		};
 		$http({
 			method: 'POST',
-			url: "http://localhost:7777/authenticate",
+			url: $window.localStorage.getItem('apiUrl')+"/authenticate",
 			data: dataUser,
 			headers: {'Content-Type': 'application/json' }
 		}).then(function successCallBack(response){
@@ -32,13 +33,15 @@ app.controller("logController", function($rootScope,$httpParamSerializer , $scop
 		});
 	}
 	
+	
+	
 	//This function is used to get an access token to access the resources
 	$scope.getToken = function() {  
 		
         var dataToken = "username="+ $window.localStorage.getItem('userLogin')+"&password="+ $window.localStorage.getItem('userPassword')+ "&grant_type=password";
 		$http({
 			method: 'POST',
-			url: "http://localhost:7777/oauth/token",
+			url: $window.localStorage.getItem('apiUrl')+"/oauth/token",
 			data: dataToken,
 			headers: {"Content-Type": "application/x-www-form-urlencoded",
 	              "Authorization": "Basic bXlDbGllbnQ6bXlDbGllbnRTZWNyZXQ=",

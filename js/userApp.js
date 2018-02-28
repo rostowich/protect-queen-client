@@ -8,7 +8,7 @@ app.controller("userController", function($rootScope, $scope, $http, $window, us
 	$scope.play=function(){
 		$http({
 			method: 'POST',
-			url: "http://localhost:7777/api/perform",
+			url: $window.localStorage.getItem('apiUrl')+"/api/perform",
 			headers: {"Authorization": "Bearer "+$window.localStorage.getItem('access_token'),
 	              "Cache-Control": "no-cache" },
 	        data: $scope.input
