@@ -1,6 +1,6 @@
 'use strict';
 var app=angular.module("indexApp");
-app.controller("regController", function($scope,$http, usSpinnerService){
+app.controller("regController", function($scope,$http, $window, usSpinnerService){
 	$scope.userinfo={};
 	$scope.register=function(email, password){
 		usSpinnerService.spin('spinner-5');
